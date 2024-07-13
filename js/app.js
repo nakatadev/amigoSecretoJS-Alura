@@ -5,11 +5,19 @@ let amigosIncluidos = document.getElementById('lista-amigos');
 let resultadoSorteio = document.getElementById('lista-sorteio');
 
 function adicionar(){
-    let amigo = document.getElementById('nome-amigo').value;
-    listaAmigos.push(amigo);
-    
-    amigosIncluidos.innerHTML = `${listaAmigos}`;
-    document.getElementById('nome-amigo').value = '';
+    let amigo = document.getElementById('nome-amigo');
+    if (amigo.value == ''){
+        alert('informe o nome do amigo');
+        return;
+    }
+    if (listaAmigos.includes(amigo.value)){
+        alert (`O nome ${amigo.value} ja foi adicionado!`);
+    }
+    else {
+        listaAmigos.push(amigo.value);
+        amigosIncluidos.innerHTML = `${listaAmigos}`;
+        document.getElementById('nome-amigo').value = '';
+    }
 }
 
 function reiniciar(){
@@ -36,4 +44,12 @@ function sortear(){
     let amigoSorteado2 = listaAmigos[indiceAleatorio2];
 
     resultadoSorteio.innerHTML = `${amigoSorteado1} --> ${amigoSorteado2}`;
+}
+
+
+
+for (let numero = 1; numero <= 100; numero++) {
+    if (numero / 5) {
+        console.log(numero);
+    }
 }
